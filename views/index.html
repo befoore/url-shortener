@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Link shortener</title>
+  <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container center">
+    <div class="headText">
+        <h1>Link shortener</h1>
+        <h2>size matters.</h2>
+      </div>
+      <div class="inputWrapper">
+        <form method="POST">
+          <input name="longUrl" type="text" placeholder="http://insertyourlongurl.com/">
+          <label for="shortUrl" class="fakeInput">http://localhost/</label><input name="shortUrl" id="shortUrl" type="text" placeholder="shortUrl">
+          <button type="submit">Shorten</button>
+        </form>
+        
+      </div>
+      <div class="result">
+        <span>Your shortened URL: </span> <a href="localhost/dX5g8H">http://shorten.it/dX5g8H</a>
+      </div>
+  </div>
+  
+  <script src="js/url-shortener.js"></script>
+</body>
+</html>
