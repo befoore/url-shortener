@@ -15,18 +15,16 @@
         <h2>size matters.</h2>
       </div>
       <div class="inputWrapper">
-        <form method="POST">
-          <input name="longUrl" type="text" placeholder="http://insertyourlongurl.com/">
+          <input name="longUrl" id="longUrl" type="text" placeholder="http://insertyourlongurl.com/">
           <label for="shortUrl" class="fakeInput">http://localhost/</label><input name="shortUrl" id="shortUrl" type="text" placeholder="shortUrl">
-          <button type="submit">Shorten</button>
-        </form>
-        
+          <button id="shortenBtn">Shorten</button>    
+          <button onclick="fetchAll()">fetch all</button>      
       </div>
       <div class="result">
         <span>Your shortened URL: </span> <a href="localhost/dX5g8H">http://shorten.it/dX5g8H</a>
       </div>
   </div>
   
-  <script src="js/url-shortener.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
