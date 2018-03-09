@@ -1,23 +1,18 @@
 @mixin large{
     @media (min-width: 1280px){
-      @content;
+        @content;
     }
-  }
-  @mixin mid{
+}
+@mixin mid{
     @media (min-width: 1024px){
-      @content;
+        @content;
     }
-  }
-  @mixin small{
+}
+@mixin small{
     @media (min-width: 768px) {
-      @content;
+        @content;
     }
-  }
-  @mixin tiny{
-    @media (min-width: 480px) {
-      @content;
-    }
-  }
+}
   
 
 html,body{
@@ -180,12 +175,50 @@ button{
     }
 }
 
-.result{
+#result{
     margin: 1.5rem 0 4rem 0;
     font-size: 1.5rem;
     color: #333;
+    display: none;
+    &.show{
+        display: block;
+    }
     a{
         color: #A3A3A3;
         text-decoration: underline;
     }
+}
+
+@keyframes moveDown{
+    from{transform: translateY(-100%)}
+    to{transform: translateY(0)}
+}
+
+@keyframes moveUp{
+    from{transform: translateY(0)}
+    to{transform: translateY(100%)}
+}
+
+#alert{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(-100%);
+    padding: 1rem;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    display: block;
+    transition: transform .3s ease;
+    &.show{
+        transform: translateY(0);
+    }
+    &.error{
+        background-color: #e53935;
+    }
+    &.success{
+        background-color: #4CAF50;
+    }
+        
 }

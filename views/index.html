@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simple URL shortener">
+  <meta name="keywords" content="url,uri,short,shortener,link">
+  <meta name="author" content="Patrik Horvath">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Link shortener</title>
   <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
@@ -17,14 +20,15 @@
       <div class="inputWrapper">
           <input name="longUrl" id="longUrl" type="text" placeholder="http://insertyourlongurl.com/">
           <label for="shortUrl" class="fakeInput">http://localhost/</label><input name="shortUrl" id="shortUrl" type="text" placeholder="shortUrl">
-          <button id="shortenBtn">Shorten</button>    
-          <button onclick="fetchAll()">fetch all</button>      
+          <button id="shortenBtn">Shorten</button>      
       </div>
-      <div class="result">
-        <span>Your shortened URL: </span> <a href="localhost/dX5g8H">http://shorten.it/dX5g8H</a>
+      <div id="result">
+        <span>Your shortened URL: </span> <a target="_blank" href=""></a>
       </div>
   </div>
   
-  <script src="js/main.js"></script>
+  <div id="alert"></div>
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=Promise"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

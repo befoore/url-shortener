@@ -177,13 +177,62 @@ button {
   }
 }
 
-.result {
+#result {
   margin: 1.5rem 0 4rem 0;
   font-size: 1.5rem;
   color: #333;
+  display: none;
 }
 
-.result a {
+#result.show {
+  display: block;
+}
+
+#result a {
   color: #A3A3A3;
   text-decoration: underline;
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+#alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-100%);
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  display: block;
+  transition: transform .3s ease;
+}
+
+#alert.show {
+  transform: translateY(0);
+}
+
+#alert.error {
+  background-color: #e53935;
+}
+
+#alert.success {
+  background-color: #4CAF50;
 }

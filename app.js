@@ -4,11 +4,12 @@ const sqlite = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const path = require('path');
 
+
+// SQLite init
 let db = new sqlite.Database('./db/links.db', (err) => {
     if (err) {
         console.error(err.message);
     }
-    console.log('Connected to the database.');
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -23,6 +24,7 @@ app.get('/', function(req, res){
 
 // API
 
+// Request to fetch all data form DB
 app.get('/api/fetch/fetchall', (req, res)=>{
     
     db.serialize( ()=>{
@@ -42,6 +44,9 @@ app.get('/api/fetch/fetchall', (req, res)=>{
     });
 });
 
+
+// Request to fetch record from DB by given short url
+// If short url does not exist in DB, returns nothing
 app.get('/api/fetch/short/:record', (req, res)=>{
     db.serialize( ()=>{
         db.get(`SELECT * FROM links WHERE short_url = ?`,[req.params.record], (err, row) => {
@@ -58,6 +63,9 @@ app.get('/api/fetch/short/:record', (req, res)=>{
     });
 });
 
+
+// Request to fetch record from DB by given long url
+// If long url does not exist in DB, returns nothing
 app.get('/api/fetch/long/:record', (req, res)=>{
     db.serialize( ()=>{
         db.get(`SELECT * FROM links WHERE long_url = ?`,[req.params.record], (err, row) => {
@@ -74,6 +82,8 @@ app.get('/api/fetch/long/:record', (req, res)=>{
     });
 });
 
+
+// Inserts new record into DB
 app.post('/api/shorten', (req, res)=>{
     db.serialize( ()=>{
         db.run(`INSERT INTO links(short_url, long_url) VALUES(?,?)`,[req.body.short_url, req.body.long_url], (err) => {
@@ -83,6 +93,8 @@ app.post('/api/shorten', (req, res)=>{
     });
 });
 
+// Redirects user to long url
+// If short url does not exist redirects to home page
 app.get('/:shortUrl', (req, res)=>{
     db.serialize( ()=>{
         db.get(`SELECT * FROM links WHERE short_url = ?`,[req.params.shortUrl], (err, row) => {
